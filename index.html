@@ -11,243 +11,303 @@ const elements = [‘Metal’, ‘Water’, ‘Wood’, ‘Fire’, ‘Earth’]
 const labPersonalities = {
 ‘Metal Rat’: {
 trait: ‘The Meticulous Organizer’,
-description: ‘You maintain an immaculate lab notebook and always know where every reagent is stored. Your sharp attention to detail catches errors before they become problems. You thrive on creating efficient systems and optimizing protocols.’
+description: ‘You maintain an immaculate lab notebook and always know where every reagent is stored.’,
+strengths: [‘Sharp attention to detail’, ‘Creates efficient systems’, ‘Catches errors before they become problems’]
 },
 ‘Water Rat’: {
 trait: ‘The Adaptive Problem-Solver’,
-description: ‘You flow around obstacles in experiments with creative solutions. When protocols fail, you intuitively adjust parameters. Your flexibility makes you invaluable during challenging projects and you excel at troubleshooting.’
+description: ‘You flow around obstacles in experiments with creative solutions.’,
+strengths: [‘Flexible and intuitive’, ‘Excellent at troubleshooting’, ‘Adjusts protocols on the fly’]
 },
 ‘Wood Rat’: {
 trait: ‘The Collaborative Networker’,
-description: ‘You build bridges between lab groups and foster collaboration. Always sharing protocols and reagents, you believe science advances through teamwork. You organize journal clubs and mentoring programs.’
+description: ‘You build bridges between lab groups and foster collaboration.’,
+strengths: [‘Shares protocols generously’, ‘Organizes journal clubs’, ‘Believes in teamwork’]
 },
 ‘Fire Rat’: {
 trait: ‘The Ambitious Pioneer’,
-description: ‘You pursue bold hypotheses with infectious enthusiasm. Your passion for discovery drives you to work late perfecting experiments. You champion risky but potentially groundbreaking projects.’
+description: ‘You pursue bold hypotheses with infectious enthusiasm.’,
+strengths: [‘Passionate about discovery’, ‘Champions risky projects’, ‘Works tirelessly on experiments’]
 },
 ‘Earth Rat’: {
 trait: ‘The Reliable Foundation’,
-description: ‘You are the steady presence every lab needs. Dependable and practical, you maintain core equipment and ensure basic supplies never run out. Your consistency keeps the lab functioning smoothly.’
+description: ‘You are the steady presence every lab needs.’,
+strengths: [‘Maintains core equipment’, ‘Ensures supplies never run out’, ‘Provides consistency’]
 },
 ‘Metal Ox’: {
 trait: ‘The Determined Perfectionist’,
-description: ‘You approach every experiment with unwavering dedication to proper technique. Your Western blots are always perfectly aligned, and you never skip controls. Methodical and strong-willed, you see every project through to publication.’
+description: ‘You approach every experiment with unwavering dedication to proper technique.’,
+strengths: [‘Never skips controls’, ‘Methodical and strong-willed’, ‘Sees projects through to publication’]
 },
 ‘Water Ox’: {
 trait: ‘The Patient Cultivator’,
-description: ‘You excel at long-term experiments that others find tedious. Cell culture, longitudinal studies, and careful data collection are your strengths. Your patience yields the most reliable datasets.’
+description: ‘You excel at long-term experiments that others find tedious.’,
+strengths: [‘Masters cell culture’, ‘Excels at longitudinal studies’, ‘Produces reliable datasets’]
 },
 ‘Wood Ox’: {
 trait: ‘The Steady Builder’,
-description: ‘You establish robust experimental systems brick by brick. Creating stable cell lines and developing new model organisms is your forte. Your groundwork supports years of future research.’
+description: ‘You establish robust experimental systems brick by brick.’,
+strengths: [‘Creates stable cell lines’, ‘Develops model organisms’, ‘Lays groundwork for future research’]
 },
 ‘Fire Ox’: {
 trait: ‘The Driven Achiever’,
-description: ‘You combine ox determination with fierce ambition. High-impact publications are your goal, and you push through setbacks with remarkable resilience. Your work ethic is legendary in the department.’
+description: ‘You combine ox determination with fierce ambition.’,
+strengths: [‘Pushes through setbacks’, ‘Legendary work ethic’, ‘Aims for high-impact publications’]
 },
 ‘Earth Ox’: {
 trait: ‘The Practical Anchor’,
-description: ‘You provide stability through common sense and reliability. When others chase flashy results, you ensure solid fundamentals. Your thorough validations make your data unquestionable.’
+description: ‘You provide stability through common sense and reliability.’,
+strengths: [‘Ensures solid fundamentals’, ‘Thorough validations’, ‘Makes data unquestionable’]
 },
 ‘Metal Tiger’: {
 trait: ‘The Bold Equipment Master’,
-description: ‘You fearlessly tackle complex instruments others avoid. Confocal microscopes, flow cytometers, and mass spectrometers hold no mystery for you. Your technical prowess commands respect.’
+description: ‘You fearlessly tackle complex instruments others avoid.’,
+strengths: [‘Masters confocal microscopes’, ‘Expert with flow cytometers’, ‘Technical prowess commands respect’]
 },
 ‘Water Tiger’: {
 trait: ‘The Intuitive Explorer’,
-description: ‘You trust your scientific instincts and pursue unexpected findings. Your willingness to follow serendipitous observations leads to novel discoveries. You adapt your approaches fluidly based on results.’
+description: ‘You trust your scientific instincts and pursue unexpected findings.’,
+strengths: [‘Follows serendipitous observations’, ‘Adapts approaches fluidly’, ‘Leads to novel discoveries’]
 },
 ‘Wood Tiger’: {
 trait: ‘The Enthusiastic Organizer’,
-description: ‘You channel tiger energy into keeping the lab running smoothly. Filling pipette tip boxes, organizing freezers, and maintaining stock solutions are your domain. Your generous spirit ensures everyone has what they need.’
+description: ‘You channel tiger energy into keeping the lab running smoothly.’,
+strengths: [‘Fills pipette tip boxes’, ‘Organizes freezers’, ‘Ensures everyone has supplies’]
 },
 ‘Fire Tiger’: {
 trait: ‘The Charismatic Leader’,
-description: ‘You lead projects with passionate conviction and inspire others to join your ambitious aims. Your presentations captivate audiences, and you excel at securing funding. Natural leadership emanates from you.’
+description: ‘You lead projects with passionate conviction.’,
+strengths: [‘Inspires others’, ‘Captivates audiences’, ‘Excels at securing funding’]
 },
 ‘Earth Tiger’: {
 trait: ‘The Grounded Risk-Taker’,
-description: ‘You balance tiger boldness with practical wisdom. Your calculated risks pay off because you prepare thoroughly. You champion innovative approaches while maintaining scientific rigor.’
+description: ‘You balance tiger boldness with practical wisdom.’,
+strengths: [‘Takes calculated risks’, ‘Prepares thoroughly’, ‘Maintains scientific rigor’]
 },
 ‘Metal Rabbit’: {
 trait: ‘The Precise Diplomat’,
-description: ‘You handle delicate situations with grace and accuracy. Perfect for sensitive experiments requiring gentle technique, you also mediate lab conflicts with tactful precision.’
+description: ‘You handle delicate situations with grace and accuracy.’,
+strengths: [‘Perfect for sensitive experiments’, ‘Mediates conflicts tactfully’, ‘Gentle technique expert’]
 },
 ‘Water Rabbit’: {
 trait: ‘The Gentle Nurturer’,
-description: ‘You have a special touch with finicky cell lines and temperamental organisms. Your calm presence helps anxious students, and you create a harmonious lab atmosphere.’
+description: ‘You have a special touch with finicky cell lines and temperamental organisms.’,
+strengths: [‘Calms anxious students’, ‘Creates harmonious atmosphere’, ‘Masters difficult cultures’]
 },
 ‘Wood Rabbit’: {
 trait: ‘The Kind Mentor’,
-description: ‘You patiently teach techniques to newcomers and share knowledge generously. Your supportive nature helps others flourish. You remember everyone's birthday and organize lab celebrations.’
+description: ‘You patiently teach techniques to newcomers.’,
+strengths: [‘Shares knowledge generously’, ‘Helps others flourish’, ‘Organizes celebrations’]
 },
 ‘Fire Rabbit’: {
 trait: ‘The Creative Designer’,
-description: ‘You design elegant experiments with artistic flair. Your figures are publication-ready works of art, and you innovate clever solutions to experimental challenges.’
+description: ‘You design elegant experiments with artistic flair.’,
+strengths: [‘Creates publication-ready figures’, ‘Innovates clever solutions’, ‘Brings beauty to science’]
 },
 ‘Earth Rabbit’: {
 trait: ‘The Cautious Planner’,
-description: ‘You carefully design experiments to avoid wasted resources. Your prudent approach prevents costly mistakes. You maintain detailed records and backup plans for everything.’
+description: ‘You carefully design experiments to avoid wasted resources.’,
+strengths: [‘Prevents costly mistakes’, ‘Maintains detailed records’, ‘Always has backup plans’]
 },
 ‘Metal Dragon’: {
 trait: ‘The Visionary Innovator’,
-description: ‘You develop cutting-edge techniques that transform the field. Your grand ideas combined with technical skill make you a force in science. You set new standards for excellence.’
+description: ‘You develop cutting-edge techniques that transform the field.’,
+strengths: [‘Grand ideas meet technical skill’, ‘Sets new standards’, ‘Force in science’]
 },
 ‘Water Dragon’: {
 trait: ‘The Insightful Sage’,
-description: ‘You see connections others miss and generate profound hypotheses. Your wisdom guides research directions, and your intuition about mechanisms proves remarkably accurate.’
+description: ‘You see connections others miss and generate profound hypotheses.’,
+strengths: [‘Guides research directions’, ‘Intuition about mechanisms’, ‘Remarkably accurate predictions’]
 },
 ‘Wood Dragon’: {
 trait: ‘The Inspirational Teacher’,
-description: ‘You share your expertise magnanimously and elevate everyone around you. Your mentees go on to great success. You build collaborative networks across institutions.’
+description: ‘You share your expertise magnanimously and elevate everyone.’,
+strengths: [‘Mentees achieve great success’, ‘Builds collaborative networks’, ‘Shares knowledge widely’]
 },
 ‘Fire Dragon’: {
 trait: ‘The Dynamic Superstar’,
-description: ‘You pursue breakthrough discoveries with dazzling energy. Your charisma attracts top collaborators and your ambition drives paradigm-shifting research. You thrive in high-pressure situations.’
+description: ‘You pursue breakthrough discoveries with dazzling energy.’,
+strengths: [‘Attracts top collaborators’, ‘Drives paradigm shifts’, ‘Thrives under pressure’]
 },
 ‘Earth Dragon’: {
 trait: ‘The Strategic Architect’,
-description: ‘You design comprehensive research programs with practical wisdom. Your realistic timelines and resource planning make ambitious projects achievable. You build lasting scientific legacies.’
+description: ‘You design comprehensive research programs with practical wisdom.’,
+strengths: [‘Realistic timelines’, ‘Excellent resource planning’, ‘Builds lasting legacies’]
 },
 ‘Metal Snake’: {
 trait: ‘The Analytical Strategist’,
-description: ‘You analyze data with penetrating insight and plan experiments with chess-like strategy. Your sharp mind cuts through complexity to identify critical experiments.’
+description: ‘You analyze data with penetrating insight.’,
+strengths: [‘Plans experiments strategically’, ‘Sharp mind’, ‘Identifies critical experiments’]
 },
 ‘Water Snake’: {
 trait: ‘The Intuitive Theorist’,
-description: ‘You sense underlying patterns in data and develop sophisticated models. Your deep thinking produces elegant explanations for complex phenomena.’
+description: ‘You sense underlying patterns in data.’,
+strengths: [‘Develops sophisticated models’, ‘Deep thinking’, ‘Elegant explanations’]
 },
 ‘Wood Snake’: {
 trait: ‘The Wise Counselor’,
-description: ‘You offer thoughtful advice on experimental design and career decisions. Your perceptive understanding of lab dynamics helps resolve conflicts. You cultivate meaningful collaborations.’
+description: ‘You offer thoughtful advice on experimental design.’,
+strengths: [‘Perceptive about lab dynamics’, ‘Resolves conflicts’, ‘Cultivates collaborations’]
 },
 ‘Fire Snake’: {
 trait: ‘The Intense Specialist’,
-description: ‘You pursue your research focus with laser intensity. Your deep expertise in your niche is unmatched. You demand excellence from yourself and produce definitive studies.’
+description: ‘You pursue your research focus with laser intensity.’,
+strengths: [‘Unmatched deep expertise’, ‘Demands excellence’, ‘Produces definitive studies’]
 },
 ‘Earth Snake’: {
 trait: ‘The Methodical Investigator’,
-description: ‘You systematically explore hypotheses with careful logic. Your well-designed experiments and thorough analysis yield reliable conclusions. You build strong arguments brick by brick.’
+description: ‘You systematically explore hypotheses with careful logic.’,
+strengths: [‘Well-designed experiments’, ‘Thorough analysis’, ‘Builds strong arguments’]
 },
 ‘Metal Horse’: {
 trait: ‘The Efficient Multi-Tasker’,
-description: ‘You gallop through experiments with impressive speed and precision. Running multiple projects simultaneously, you maintain high standards while meeting tight deadlines.’
+description: ‘You gallop through experiments with impressive speed and precision.’,
+strengths: [‘Runs multiple projects’, ‘Maintains high standards’, ‘Meets tight deadlines’]
 },
 ‘Water Horse’: {
 trait: ‘The Adventurous Explorer’,
-description: ‘You eagerly try new techniques and explore uncharted research areas. Your enthusiasm for learning keeps you at the forefront of methodological advances.’
+description: ‘You eagerly try new techniques and explore uncharted research areas.’,
+strengths: [‘Enthusiasm for learning’, ‘Stays at forefront’, ‘Masters new methods’]
 },
 ‘Wood Horse’: {
 trait: ‘The Energetic Collaborator’,
-description: ‘You connect researchers across disciplines with boundless enthusiasm. Your collaborative spirit and quick work pace make you a valued team member on any project.’
+description: ‘You connect researchers across disciplines with boundless enthusiasm.’,
+strengths: [‘Collaborative spirit’, ‘Quick work pace’, ‘Valued team member’]
 },
 ‘Fire Horse’: {
 trait: ‘The Passionate Dynamo’,
-description: ‘You pursue research with unbridled passion and remarkable energy. Your excitement is contagious, motivating entire labs. You thrive under pressure and excel at rapid-fire experiments.’
+description: ‘You pursue research with unbridled passion and remarkable energy.’,
+strengths: [‘Excitement is contagious’, ‘Motivates entire labs’, ‘Thrives under pressure’]
 },
 ‘Earth Horse’: {
 trait: ‘The Dependable Workhorse’,
-description: ‘You consistently deliver quality results through steady effort. Your practical approach and reliable output make you indispensable. You tackle unglamorous but essential experiments.’
+description: ‘You consistently deliver quality results through steady effort.’,
+strengths: [‘Practical approach’, ‘Reliable output’, ‘Tackles essential experiments’]
 },
 ‘Metal Goat’: {
 trait: ‘The Refined Artisan’,
-description: ‘You perfect techniques with artistic precision. Your immunofluorescence images are gallery-worthy, and you optimize protocols to elegant simplicity.’
+description: ‘You perfect techniques with artistic precision.’,
+strengths: [‘Gallery-worthy images’, ‘Optimizes protocols’, ‘Elegant simplicity’]
 },
 ‘Water Goat’: {
 trait: ‘The Empathetic Supporter’,
-description: ‘You sense when colleagues are struggling and offer quiet support. Your compassionate presence makes the lab a warmer place. You excel at sensitive experiments requiring gentle handling.’
+description: ‘You sense when colleagues are struggling and offer quiet support.’,
+strengths: [‘Compassionate presence’, ‘Warms lab atmosphere’, ‘Gentle with experiments’]
 },
 ‘Wood Goat’: {
 trait: ‘The Harmonious Team Player’,
-description: ‘You adapt to group needs and maintain lab harmony. Flexible and cooperative, you help wherever needed. You organize communal spaces and shared resources thoughtfully.’
+description: ‘You adapt to group needs and maintain lab harmony.’,
+strengths: [‘Flexible and cooperative’, ‘Helps wherever needed’, ‘Organizes shared spaces’]
 },
 ‘Fire Goat’: {
 trait: ‘The Creative Visionary’,
-description: ‘You generate innovative experimental approaches with artistic flair. Your imagination produces unique solutions to scientific challenges. You bring beauty and creativity to research.’
+description: ‘You generate innovative experimental approaches.’,
+strengths: [‘Imaginative solutions’, ‘Brings beauty to research’, ‘Artistic flair’]
 },
 ‘Earth Goat’: {
 trait: ‘The Careful Guardian’,
-description: ‘You maintain lab safety and proper protocols with gentle persistence. Your attention to detail protects everyone. You ensure proper waste disposal and equipment maintenance.’
+description: ‘You maintain lab safety and proper protocols.’,
+strengths: [‘Protects everyone’, ‘Ensures proper disposal’, ‘Equipment maintenance’]
 },
 ‘Metal Monkey’: {
 trait: ‘The Clever Improviser’,
-description: ‘You ingeniously MacGyver solutions when equipment fails or reagents are unavailable. Your quick thinking and technical skill solve problems others deem impossible.’
+description: ‘You ingeniously MacGyver solutions when equipment fails.’,
+strengths: [‘Quick thinking’, ‘Technical skill’, ‘Solves impossible problems’]
 },
 ‘Water Monkey’: {
 trait: ‘The Versatile Learner’,
-description: ‘You rapidly master new techniques and adapt to any project. Your intellectual flexibility makes you valuable across diverse research areas. You thrive on variety.’
+description: ‘You rapidly master new techniques and adapt to any project.’,
+strengths: [‘Intellectual flexibility’, ‘Valuable across fields’, ‘Thrives on variety’]
 },
 ‘Wood Monkey’: {
 trait: ‘The Playful Innovator’,
-description: ‘You approach science with curiosity and humor, making the lab enjoyable. Your creative problem-solving and collaborative spirit foster innovation through fun exploration.’
+description: ‘You approach science with curiosity and humor.’,
+strengths: [‘Makes lab enjoyable’, ‘Creative problem-solving’, ‘Fun exploration’]
 },
 ‘Fire Monkey’: {
 trait: ‘The Competitive Achiever’,
-description: ‘You pursue discoveries with clever strategy and ambitious drive. Quick-witted and resourceful, you outmaneuver obstacles. Your competitive nature pushes you to excel.’
+description: ‘You pursue discoveries with clever strategy.’,
+strengths: [‘Quick-witted’, ‘Resourceful’, ‘Competitive drive’]
 },
 ‘Earth Monkey’: {
 trait: ‘The Practical Genius’,
-description: ‘You combine cleverness with common sense, finding efficient solutions to complex problems. Your grounded intelligence makes abstract concepts accessible and implementable.’
+description: ‘You combine cleverness with common sense.’,
+strengths: [‘Efficient solutions’, ‘Grounded intelligence’, ‘Makes concepts accessible’]
 },
 ‘Metal Rooster’: {
 trait: ‘The Meticulous Timekeeper’,
-description: ‘You arrive early, maintain strict schedules, and ensure time-sensitive experiments run perfectly. Your organized approach and attention to detail prevent protocol errors.’
+description: ‘You arrive early and maintain strict schedules.’,
+strengths: [‘Time-sensitive experiments run perfectly’, ‘Organized approach’, ‘Prevents errors’]
 },
 ‘Water Rooster’: {
 trait: ‘The Observant Analyst’,
-description: ‘You notice subtle experimental details others miss. Your careful observations and thoughtful analysis catch artifacts and reveal true signals in noisy data.’
+description: ‘You notice subtle experimental details others miss.’,
+strengths: [‘Careful observations’, ‘Catches artifacts’, ‘Reveals true signals’]
 },
 ‘Wood Rooster’: {
 trait: ‘The Dedicated Educator’,
-description: ‘You meticulously teach proper technique and emphasize doing things right. Your commitment to training produces skilled researchers. You maintain high standards while being supportive.’
+description: ‘You meticulously teach proper technique.’,
+strengths: [‘Produces skilled researchers’, ‘High standards’, ‘Supportive teaching’]
 },
 ‘Fire Rooster’: {
 trait: ‘The Proud Perfectionist’,
-description: ‘You take immense pride in producing flawless work. Your presentations are polished and your data is pristine. You confidently showcase your accomplishments and inspire others.’
+description: ‘You take immense pride in producing flawless work.’,
+strengths: [‘Polished presentations’, ‘Pristine data’, ‘Inspires others’]
 },
 ‘Earth Rooster’: {
 trait: ‘The Reliable Organizer’,
-description: ‘You systematically maintain lab order and ensure nothing is overlooked. Your practical diligence keeps experiments on track and documentation complete.’
+description: ‘You systematically maintain lab order.’,
+strengths: [‘Nothing overlooked’, ‘Keeps experiments on track’, ‘Complete documentation’]
 },
 ‘Metal Dog’: {
 trait: ‘The Principled Watchdog’,
-description: ‘You uphold rigorous scientific standards and call out questionable practices. Your integrity ensures ethical research and reproducible results. You protect scientific truth fiercely.’
+description: ‘You uphold rigorous scientific standards.’,
+strengths: [‘Ensures ethical research’, ‘Reproducible results’, ‘Protects scientific truth’]
 },
 ‘Water Dog’: {
 trait: ‘The Intuitive Ally’,
-description: ‘You sense when colleagues need help and offer loyal support. Your emotional intelligence maintains lab morale. You build deep, lasting professional relationships.’
+description: ‘You sense when colleagues need help.’,
+strengths: [‘Emotional intelligence’, ‘Maintains morale’, ‘Lasting relationships’]
 },
 ‘Wood Dog’: {
 trait: ‘The Loyal Teammate’,
-description: ‘You support your lab members through thick and thin. Generous with your time and knowledge, you create a family-like atmosphere. Your faithfulness to colleagues is unwavering.’
+description: ‘You support lab members through thick and thin.’,
+strengths: [‘Generous with time’, ‘Creates family atmosphere’, ‘Unwavering faithfulness’]
 },
 ‘Fire Dog’: {
 trait: ‘The Passionate Advocate’,
-description: ‘You champion important causes in science with fierce dedication. Your enthusiasm for your research mission inspires others. You fight for your ideas and defend your colleagues.’
+description: ‘You champion important causes in science.’,
+strengths: [‘Fierce dedication’, ‘Inspires others’, ‘Defends colleagues’]
 },
 ‘Earth Dog’: {
 trait: ‘The Trustworthy Foundation’,
-description: ‘You provide stable, honest counsel and reliable results. Your practical loyalty and common sense make you the person everyone trusts. You build enduring lab culture.’
+description: ‘You provide stable, honest counsel.’,
+strengths: [‘Reliable results’, ‘Practical loyalty’, ‘Builds enduring culture’]
 },
 ‘Metal Pig’: {
 trait: ‘The Generous Perfectionist’,
-description: ‘You share high-quality reagents and meticulously prepared materials. Your generosity extends to helping others perfect their techniques. You pursue excellence while supporting all.’
+description: ‘You share high-quality reagents and materials.’,
+strengths: [‘Helps others perfect techniques’, ‘Pursues excellence’, ‘Supports all’]
 },
 ‘Water Pig’: {
 trait: ‘The Compassionate Peacemaker’,
-description: ‘You create a warm, inclusive lab environment where everyone feels valued. Your gentle wisdom and emotional support help colleagues through difficult times. You facilitate harmony.’
+description: ‘You create a warm, inclusive lab environment.’,
+strengths: [‘Gentle wisdom’, ‘Emotional support’, ‘Facilitates harmony’]
 },
 ‘Wood Pig’: {
 trait: ‘The Abundant Provider’,
-description: ‘You ensure the lab never lacks supplies or support. Generous and growth-oriented, you help others develop their potential. You celebrate everyone's successes genuinely.’
+description: ‘You ensure the lab never lacks supplies or support.’,
+strengths: [‘Helps others develop’, ‘Celebrates successes’, ‘Growth-oriented’]
 },
 ‘Fire Pig’: {
 trait: ‘The Enthusiastic Enjoyer’,
-description: ‘You find joy in science and share it abundantly. Your positive energy and celebration of results motivate the entire lab. You organize social events and make research fun.’
+description: ‘You find joy in science and share it abundantly.’,
+strengths: [‘Positive energy’, ‘Celebrates results’, ‘Makes research fun’]
 },
 ‘Earth Pig’: {
 trait: ‘The Honest Supporter’,
-description: ‘You offer sincere help and practical assistance to all. Your down-to-earth generosity and reliable support create a trusting, productive environment. You give honestly and openly.’
+description: ‘You offer sincere help and practical assistance.’,
+strengths: [‘Down-to-earth generosity’, ‘Reliable support’, ‘Creates trust’]
 }
 };
 
@@ -359,19 +419,36 @@ return (
           <div className="absolute bottom-0 right-0 w-16 h-16 border-b-4 border-r-4 border-red-500 rounded-br-xl"></div>
           
           <div className="relative z-10">
-            <div className="text-center mb-4">
+            <div className="text-center mb-6">
               <span className="text-5xl mb-3 block">🎊</span>
               <h2 className="text-3xl md:text-4xl font-bold text-red-700 mb-2" style={{fontFamily: 'serif'}}>
                 {result.sign}
               </h2>
               <div className="w-24 h-1 bg-gradient-to-r from-transparent via-yellow-500 to-transparent mx-auto mb-3"></div>
-              <h3 className="text-xl md:text-2xl font-bold text-red-600 mb-4 bg-yellow-100 inline-block px-6 py-2 rounded-full border-2 border-yellow-400">
+              <h3 className="text-xl md:text-2xl font-bold text-red-600 mb-2 bg-yellow-100 inline-block px-6 py-2 rounded-full border-2 border-yellow-400">
                 {result.trait}
               </h3>
             </div>
-            <p className="text-gray-800 leading-relaxed text-lg text-center md:text-left px-4">
-              {result.description}
-            </p>
+            
+            <div className="bg-white bg-opacity-70 rounded-lg p-6 mb-4">
+              <p className="text-gray-800 text-lg leading-relaxed mb-4">
+                {result.description}
+              </p>
+              
+              <div className="border-t-2 border-yellow-400 pt-4">
+                <h4 className="text-lg font-bold text-red-700 mb-3 flex items-center gap-2">
+                  <span>⭐</span> Your Lab Strengths
+                </h4>
+                <ul className="space-y-2">
+                  {result.strengths.map((strength, index) => (
+                    <li key={index} className="flex items-start gap-2 text-gray-700">
+                      <span className="text-yellow-600 mt-1">•</span>
+                      <span>{strength}</span>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            </div>
           </div>
         </div>
       )}

@@ -1,486 +1,452 @@
-import React, { useState } from ‘react’;
-import { Calendar } from ‘lucide-react’;
+<!DOCTYPE html>
 
-const ZodiacLabCalculator = () => {
-const [birthdate, setBirthdate] = useState(’’);
-const [result, setResult] = useState(null);
-
-const animals = [‘Rat’, ‘Ox’, ‘Tiger’, ‘Rabbit’, ‘Dragon’, ‘Snake’, ‘Horse’, ‘Goat’, ‘Monkey’, ‘Rooster’, ‘Dog’, ‘Pig’];
-const elements = [‘Metal’, ‘Water’, ‘Wood’, ‘Fire’, ‘Earth’];
-
-const labPersonalities = {
-‘Metal Rat’: {
-trait: ‘The Meticulous Organizer’,
-description: ‘You maintain an immaculate lab notebook and always know where every reagent is stored.’,
-strengths: [‘Sharp attention to detail’, ‘Creates efficient systems’, ‘Catches errors before they become problems’]
-},
-‘Water Rat’: {
-trait: ‘The Adaptive Problem-Solver’,
-description: ‘You flow around obstacles in experiments with creative solutions.’,
-strengths: [‘Flexible and intuitive’, ‘Excellent at troubleshooting’, ‘Adjusts protocols on the fly’]
-},
-‘Wood Rat’: {
-trait: ‘The Collaborative Networker’,
-description: ‘You build bridges between lab groups and foster collaboration.’,
-strengths: [‘Shares protocols generously’, ‘Organizes journal clubs’, ‘Believes in teamwork’]
-},
-‘Fire Rat’: {
-trait: ‘The Ambitious Pioneer’,
-description: ‘You pursue bold hypotheses with infectious enthusiasm.’,
-strengths: [‘Passionate about discovery’, ‘Champions risky projects’, ‘Works tirelessly on experiments’]
-},
-‘Earth Rat’: {
-trait: ‘The Reliable Foundation’,
-description: ‘You are the steady presence every lab needs.’,
-strengths: [‘Maintains core equipment’, ‘Ensures supplies never run out’, ‘Provides consistency’]
-},
-‘Metal Ox’: {
-trait: ‘The Determined Perfectionist’,
-description: ‘You approach every experiment with unwavering dedication to proper technique.’,
-strengths: [‘Never skips controls’, ‘Methodical and strong-willed’, ‘Sees projects through to publication’]
-},
-‘Water Ox’: {
-trait: ‘The Patient Cultivator’,
-description: ‘You excel at long-term experiments that others find tedious.’,
-strengths: [‘Masters cell culture’, ‘Excels at longitudinal studies’, ‘Produces reliable datasets’]
-},
-‘Wood Ox’: {
-trait: ‘The Steady Builder’,
-description: ‘You establish robust experimental systems brick by brick.’,
-strengths: [‘Creates stable cell lines’, ‘Develops model organisms’, ‘Lays groundwork for future research’]
-},
-‘Fire Ox’: {
-trait: ‘The Driven Achiever’,
-description: ‘You combine ox determination with fierce ambition.’,
-strengths: [‘Pushes through setbacks’, ‘Legendary work ethic’, ‘Aims for high-impact publications’]
-},
-‘Earth Ox’: {
-trait: ‘The Practical Anchor’,
-description: ‘You provide stability through common sense and reliability.’,
-strengths: [‘Ensures solid fundamentals’, ‘Thorough validations’, ‘Makes data unquestionable’]
-},
-‘Metal Tiger’: {
-trait: ‘The Bold Equipment Master’,
-description: ‘You fearlessly tackle complex instruments others avoid.’,
-strengths: [‘Masters confocal microscopes’, ‘Expert with flow cytometers’, ‘Technical prowess commands respect’]
-},
-‘Water Tiger’: {
-trait: ‘The Intuitive Explorer’,
-description: ‘You trust your scientific instincts and pursue unexpected findings.’,
-strengths: [‘Follows serendipitous observations’, ‘Adapts approaches fluidly’, ‘Leads to novel discoveries’]
-},
-‘Wood Tiger’: {
-trait: ‘The Enthusiastic Organizer’,
-description: ‘You channel tiger energy into keeping the lab running smoothly.’,
-strengths: [‘Fills pipette tip boxes’, ‘Organizes freezers’, ‘Ensures everyone has supplies’]
-},
-‘Fire Tiger’: {
-trait: ‘The Charismatic Leader’,
-description: ‘You lead projects with passionate conviction.’,
-strengths: [‘Inspires others’, ‘Captivates audiences’, ‘Excels at securing funding’]
-},
-‘Earth Tiger’: {
-trait: ‘The Grounded Risk-Taker’,
-description: ‘You balance tiger boldness with practical wisdom.’,
-strengths: [‘Takes calculated risks’, ‘Prepares thoroughly’, ‘Maintains scientific rigor’]
-},
-‘Metal Rabbit’: {
-trait: ‘The Precise Diplomat’,
-description: ‘You handle delicate situations with grace and accuracy.’,
-strengths: [‘Perfect for sensitive experiments’, ‘Mediates conflicts tactfully’, ‘Gentle technique expert’]
-},
-‘Water Rabbit’: {
-trait: ‘The Gentle Nurturer’,
-description: ‘You have a special touch with finicky cell lines and temperamental organisms.’,
-strengths: [‘Calms anxious students’, ‘Creates harmonious atmosphere’, ‘Masters difficult cultures’]
-},
-‘Wood Rabbit’: {
-trait: ‘The Kind Mentor’,
-description: ‘You patiently teach techniques to newcomers.’,
-strengths: [‘Shares knowledge generously’, ‘Helps others flourish’, ‘Organizes celebrations’]
-},
-‘Fire Rabbit’: {
-trait: ‘The Creative Designer’,
-description: ‘You design elegant experiments with artistic flair.’,
-strengths: [‘Creates publication-ready figures’, ‘Innovates clever solutions’, ‘Brings beauty to science’]
-},
-‘Earth Rabbit’: {
-trait: ‘The Cautious Planner’,
-description: ‘You carefully design experiments to avoid wasted resources.’,
-strengths: [‘Prevents costly mistakes’, ‘Maintains detailed records’, ‘Always has backup plans’]
-},
-‘Metal Dragon’: {
-trait: ‘The Visionary Innovator’,
-description: ‘You develop cutting-edge techniques that transform the field.’,
-strengths: [‘Grand ideas meet technical skill’, ‘Sets new standards’, ‘Force in science’]
-},
-‘Water Dragon’: {
-trait: ‘The Insightful Sage’,
-description: ‘You see connections others miss and generate profound hypotheses.’,
-strengths: [‘Guides research directions’, ‘Intuition about mechanisms’, ‘Remarkably accurate predictions’]
-},
-‘Wood Dragon’: {
-trait: ‘The Inspirational Teacher’,
-description: ‘You share your expertise magnanimously and elevate everyone.’,
-strengths: [‘Mentees achieve great success’, ‘Builds collaborative networks’, ‘Shares knowledge widely’]
-},
-‘Fire Dragon’: {
-trait: ‘The Dynamic Superstar’,
-description: ‘You pursue breakthrough discoveries with dazzling energy.’,
-strengths: [‘Attracts top collaborators’, ‘Drives paradigm shifts’, ‘Thrives under pressure’]
-},
-‘Earth Dragon’: {
-trait: ‘The Strategic Architect’,
-description: ‘You design comprehensive research programs with practical wisdom.’,
-strengths: [‘Realistic timelines’, ‘Excellent resource planning’, ‘Builds lasting legacies’]
-},
-‘Metal Snake’: {
-trait: ‘The Analytical Strategist’,
-description: ‘You analyze data with penetrating insight.’,
-strengths: [‘Plans experiments strategically’, ‘Sharp mind’, ‘Identifies critical experiments’]
-},
-‘Water Snake’: {
-trait: ‘The Intuitive Theorist’,
-description: ‘You sense underlying patterns in data.’,
-strengths: [‘Develops sophisticated models’, ‘Deep thinking’, ‘Elegant explanations’]
-},
-‘Wood Snake’: {
-trait: ‘The Wise Counselor’,
-description: ‘You offer thoughtful advice on experimental design.’,
-strengths: [‘Perceptive about lab dynamics’, ‘Resolves conflicts’, ‘Cultivates collaborations’]
-},
-‘Fire Snake’: {
-trait: ‘The Intense Specialist’,
-description: ‘You pursue your research focus with laser intensity.’,
-strengths: [‘Unmatched deep expertise’, ‘Demands excellence’, ‘Produces definitive studies’]
-},
-‘Earth Snake’: {
-trait: ‘The Methodical Investigator’,
-description: ‘You systematically explore hypotheses with careful logic.’,
-strengths: [‘Well-designed experiments’, ‘Thorough analysis’, ‘Builds strong arguments’]
-},
-‘Metal Horse’: {
-trait: ‘The Efficient Multi-Tasker’,
-description: ‘You gallop through experiments with impressive speed and precision.’,
-strengths: [‘Runs multiple projects’, ‘Maintains high standards’, ‘Meets tight deadlines’]
-},
-‘Water Horse’: {
-trait: ‘The Adventurous Explorer’,
-description: ‘You eagerly try new techniques and explore uncharted research areas.’,
-strengths: [‘Enthusiasm for learning’, ‘Stays at forefront’, ‘Masters new methods’]
-},
-‘Wood Horse’: {
-trait: ‘The Energetic Collaborator’,
-description: ‘You connect researchers across disciplines with boundless enthusiasm.’,
-strengths: [‘Collaborative spirit’, ‘Quick work pace’, ‘Valued team member’]
-},
-‘Fire Horse’: {
-trait: ‘The Passionate Dynamo’,
-description: ‘You pursue research with unbridled passion and remarkable energy.’,
-strengths: [‘Excitement is contagious’, ‘Motivates entire labs’, ‘Thrives under pressure’]
-},
-‘Earth Horse’: {
-trait: ‘The Dependable Workhorse’,
-description: ‘You consistently deliver quality results through steady effort.’,
-strengths: [‘Practical approach’, ‘Reliable output’, ‘Tackles essential experiments’]
-},
-‘Metal Goat’: {
-trait: ‘The Refined Artisan’,
-description: ‘You perfect techniques with artistic precision.’,
-strengths: [‘Gallery-worthy images’, ‘Optimizes protocols’, ‘Elegant simplicity’]
-},
-‘Water Goat’: {
-trait: ‘The Empathetic Supporter’,
-description: ‘You sense when colleagues are struggling and offer quiet support.’,
-strengths: [‘Compassionate presence’, ‘Warms lab atmosphere’, ‘Gentle with experiments’]
-},
-‘Wood Goat’: {
-trait: ‘The Harmonious Team Player’,
-description: ‘You adapt to group needs and maintain lab harmony.’,
-strengths: [‘Flexible and cooperative’, ‘Helps wherever needed’, ‘Organizes shared spaces’]
-},
-‘Fire Goat’: {
-trait: ‘The Creative Visionary’,
-description: ‘You generate innovative experimental approaches.’,
-strengths: [‘Imaginative solutions’, ‘Brings beauty to research’, ‘Artistic flair’]
-},
-‘Earth Goat’: {
-trait: ‘The Careful Guardian’,
-description: ‘You maintain lab safety and proper protocols.’,
-strengths: [‘Protects everyone’, ‘Ensures proper disposal’, ‘Equipment maintenance’]
-},
-‘Metal Monkey’: {
-trait: ‘The Clever Improviser’,
-description: ‘You ingeniously MacGyver solutions when equipment fails.’,
-strengths: [‘Quick thinking’, ‘Technical skill’, ‘Solves impossible problems’]
-},
-‘Water Monkey’: {
-trait: ‘The Versatile Learner’,
-description: ‘You rapidly master new techniques and adapt to any project.’,
-strengths: [‘Intellectual flexibility’, ‘Valuable across fields’, ‘Thrives on variety’]
-},
-‘Wood Monkey’: {
-trait: ‘The Playful Innovator’,
-description: ‘You approach science with curiosity and humor.’,
-strengths: [‘Makes lab enjoyable’, ‘Creative problem-solving’, ‘Fun exploration’]
-},
-‘Fire Monkey’: {
-trait: ‘The Competitive Achiever’,
-description: ‘You pursue discoveries with clever strategy.’,
-strengths: [‘Quick-witted’, ‘Resourceful’, ‘Competitive drive’]
-},
-‘Earth Monkey’: {
-trait: ‘The Practical Genius’,
-description: ‘You combine cleverness with common sense.’,
-strengths: [‘Efficient solutions’, ‘Grounded intelligence’, ‘Makes concepts accessible’]
-},
-‘Metal Rooster’: {
-trait: ‘The Meticulous Timekeeper’,
-description: ‘You arrive early and maintain strict schedules.’,
-strengths: [‘Time-sensitive experiments run perfectly’, ‘Organized approach’, ‘Prevents errors’]
-},
-‘Water Rooster’: {
-trait: ‘The Observant Analyst’,
-description: ‘You notice subtle experimental details others miss.’,
-strengths: [‘Careful observations’, ‘Catches artifacts’, ‘Reveals true signals’]
-},
-‘Wood Rooster’: {
-trait: ‘The Dedicated Educator’,
-description: ‘You meticulously teach proper technique.’,
-strengths: [‘Produces skilled researchers’, ‘High standards’, ‘Supportive teaching’]
-},
-‘Fire Rooster’: {
-trait: ‘The Proud Perfectionist’,
-description: ‘You take immense pride in producing flawless work.’,
-strengths: [‘Polished presentations’, ‘Pristine data’, ‘Inspires others’]
-},
-‘Earth Rooster’: {
-trait: ‘The Reliable Organizer’,
-description: ‘You systematically maintain lab order.’,
-strengths: [‘Nothing overlooked’, ‘Keeps experiments on track’, ‘Complete documentation’]
-},
-‘Metal Dog’: {
-trait: ‘The Principled Watchdog’,
-description: ‘You uphold rigorous scientific standards.’,
-strengths: [‘Ensures ethical research’, ‘Reproducible results’, ‘Protects scientific truth’]
-},
-‘Water Dog’: {
-trait: ‘The Intuitive Ally’,
-description: ‘You sense when colleagues need help.’,
-strengths: [‘Emotional intelligence’, ‘Maintains morale’, ‘Lasting relationships’]
-},
-‘Wood Dog’: {
-trait: ‘The Loyal Teammate’,
-description: ‘You support lab members through thick and thin.’,
-strengths: [‘Generous with time’, ‘Creates family atmosphere’, ‘Unwavering faithfulness’]
-},
-‘Fire Dog’: {
-trait: ‘The Passionate Advocate’,
-description: ‘You champion important causes in science.’,
-strengths: [‘Fierce dedication’, ‘Inspires others’, ‘Defends colleagues’]
-},
-‘Earth Dog’: {
-trait: ‘The Trustworthy Foundation’,
-description: ‘You provide stable, honest counsel.’,
-strengths: [‘Reliable results’, ‘Practical loyalty’, ‘Builds enduring culture’]
-},
-‘Metal Pig’: {
-trait: ‘The Generous Perfectionist’,
-description: ‘You share high-quality reagents and materials.’,
-strengths: [‘Helps others perfect techniques’, ‘Pursues excellence’, ‘Supports all’]
-},
-‘Water Pig’: {
-trait: ‘The Compassionate Peacemaker’,
-description: ‘You create a warm, inclusive lab environment.’,
-strengths: [‘Gentle wisdom’, ‘Emotional support’, ‘Facilitates harmony’]
-},
-‘Wood Pig’: {
-trait: ‘The Abundant Provider’,
-description: ‘You ensure the lab never lacks supplies or support.’,
-strengths: [‘Helps others develop’, ‘Celebrates successes’, ‘Growth-oriented’]
-},
-‘Fire Pig’: {
-trait: ‘The Enthusiastic Enjoyer’,
-description: ‘You find joy in science and share it abundantly.’,
-strengths: [‘Positive energy’, ‘Celebrates results’, ‘Makes research fun’]
-},
-‘Earth Pig’: {
-trait: ‘The Honest Supporter’,
-description: ‘You offer sincere help and practical assistance.’,
-strengths: [‘Down-to-earth generosity’, ‘Reliable support’, ‘Creates trust’]
-}
-};
-
-const getChineseZodiac = (year) => {
-const baseYear = 1924;
-const yearsSince = year - baseYear;
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lab Personality Zodiac | 實驗室生肖</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@700&display=swap');
+        .chinese-font { font-family: 'Noto Serif SC', serif; }
+    </style>
+</head>
+<body>
+    <div id="app"></div>
 
 ```
-const animalIndex = yearsSince % 12;
-const elementIndex = Math.floor((yearsSince % 10) / 2);
+<script>
+    const animals = ['Rat', 'Ox', 'Tiger', 'Rabbit', 'Dragon', 'Snake', 'Horse', 'Goat', 'Monkey', 'Rooster', 'Dog', 'Pig'];
+    const elements = ['Metal', 'Water', 'Wood', 'Fire', 'Earth'];
 
-return {
-  animal: animals[animalIndex],
-  element: elements[elementIndex]
-};
-```
+    const labPersonalities = {
+        'Metal Rat': {
+            trait: 'The Meticulous Organizer',
+            description: 'You maintain an immaculate lab notebook and always know where every reagent is stored.',
+            strengths: ['Sharp attention to detail', 'Creates efficient systems', 'Catches errors before they become problems']
+        },
+        'Water Rat': {
+            trait: 'The Adaptive Problem-Solver',
+            description: 'You flow around obstacles in experiments with creative solutions.',
+            strengths: ['Flexible and intuitive', 'Excellent at troubleshooting', 'Adjusts protocols on the fly']
+        },
+        'Wood Rat': {
+            trait: 'The Collaborative Networker',
+            description: 'You build bridges between lab groups and foster collaboration.',
+            strengths: ['Shares protocols generously', 'Organizes journal clubs', 'Believes in teamwork']
+        },
+        'Fire Rat': {
+            trait: 'The Ambitious Pioneer',
+            description: 'You pursue bold hypotheses with infectious enthusiasm.',
+            strengths: ['Passionate about discovery', 'Champions risky projects', 'Works tirelessly on experiments']
+        },
+        'Earth Rat': {
+            trait: 'The Reliable Foundation',
+            description: 'You are the steady presence every lab needs.',
+            strengths: ['Maintains core equipment', 'Ensures supplies never run out', 'Provides consistency']
+        },
+        'Metal Ox': {
+            trait: 'The Determined Perfectionist',
+            description: 'You approach every experiment with unwavering dedication to proper technique.',
+            strengths: ['Never skips controls', 'Methodical and strong-willed', 'Sees projects through to publication']
+        },
+        'Water Ox': {
+            trait: 'The Patient Cultivator',
+            description: 'You excel at long-term experiments that others find tedious.',
+            strengths: ['Masters cell culture', 'Excels at longitudinal studies', 'Produces reliable datasets']
+        },
+        'Wood Ox': {
+            trait: 'The Steady Builder',
+            description: 'You establish robust experimental systems brick by brick.',
+            strengths: ['Creates stable cell lines', 'Develops model organisms', 'Lays groundwork for future research']
+        },
+        'Fire Ox': {
+            trait: 'The Driven Achiever',
+            description: 'You combine ox determination with fierce ambition.',
+            strengths: ['Pushes through setbacks', 'Legendary work ethic', 'Aims for high-impact publications']
+        },
+        'Earth Ox': {
+            trait: 'The Practical Anchor',
+            description: 'You provide stability through common sense and reliability.',
+            strengths: ['Ensures solid fundamentals', 'Thorough validations', 'Makes data unquestionable']
+        },
+        'Metal Tiger': {
+            trait: 'The Bold Equipment Master',
+            description: 'You fearlessly tackle complex instruments others avoid.',
+            strengths: ['Masters confocal microscopes', 'Expert with flow cytometers', 'Technical prowess commands respect']
+        },
+        'Water Tiger': {
+            trait: 'The Intuitive Explorer',
+            description: 'You trust your scientific instincts and pursue unexpected findings.',
+            strengths: ['Follows serendipitous observations', 'Adapts approaches fluidly', 'Leads to novel discoveries']
+        },
+        'Wood Tiger': {
+            trait: 'The Enthusiastic Organizer',
+            description: 'You channel tiger energy into keeping the lab running smoothly.',
+            strengths: ['Fills pipette tip boxes', 'Organizes freezers', 'Ensures everyone has supplies']
+        },
+        'Fire Tiger': {
+            trait: 'The Charismatic Leader',
+            description: 'You lead projects with passionate conviction.',
+            strengths: ['Inspires others', 'Captivates audiences', 'Excels at securing funding']
+        },
+        'Earth Tiger': {
+            trait: 'The Grounded Risk-Taker',
+            description: 'You balance tiger boldness with practical wisdom.',
+            strengths: ['Takes calculated risks', 'Prepares thoroughly', 'Maintains scientific rigor']
+        },
+        'Metal Rabbit': {
+            trait: 'The Precise Diplomat',
+            description: 'You handle delicate situations with grace and accuracy.',
+            strengths: ['Perfect for sensitive experiments', 'Mediates conflicts tactfully', 'Gentle technique expert']
+        },
+        'Water Rabbit': {
+            trait: 'The Gentle Nurturer',
+            description: 'You have a special touch with finicky cell lines and temperamental organisms.',
+            strengths: ['Calms anxious students', 'Creates harmonious atmosphere', 'Masters difficult cultures']
+        },
+        'Wood Rabbit': {
+            trait: 'The Kind Mentor',
+            description: 'You patiently teach techniques to newcomers.',
+            strengths: ['Shares knowledge generously', 'Helps others flourish', 'Organizes celebrations']
+        },
+        'Fire Rabbit': {
+            trait: 'The Creative Designer',
+            description: 'You design elegant experiments with artistic flair.',
+            strengths: ['Creates publication-ready figures', 'Innovates clever solutions', 'Brings beauty to science']
+        },
+        'Earth Rabbit': {
+            trait: 'The Cautious Planner',
+            description: 'You carefully design experiments to avoid wasted resources.',
+            strengths: ['Prevents costly mistakes', 'Maintains detailed records', 'Always has backup plans']
+        },
+        'Metal Dragon': {
+            trait: 'The Visionary Innovator',
+            description: 'You develop cutting-edge techniques that transform the field.',
+            strengths: ['Grand ideas meet technical skill', 'Sets new standards', 'Force in science']
+        },
+        'Water Dragon': {
+            trait: 'The Insightful Sage',
+            description: 'You see connections others miss and generate profound hypotheses.',
+            strengths: ['Guides research directions', 'Intuition about mechanisms', 'Remarkably accurate predictions']
+        },
+        'Wood Dragon': {
+            trait: 'The Inspirational Teacher',
+            description: 'You share your expertise magnanimously and elevate everyone.',
+            strengths: ['Mentees achieve great success', 'Builds collaborative networks', 'Shares knowledge widely']
+        },
+        'Fire Dragon': {
+            trait: 'The Dynamic Superstar',
+            description: 'You pursue breakthrough discoveries with dazzling energy.',
+            strengths: ['Attracts top collaborators', 'Drives paradigm shifts', 'Thrives under pressure']
+        },
+        'Earth Dragon': {
+            trait: 'The Strategic Architect',
+            description: 'You design comprehensive research programs with practical wisdom.',
+            strengths: ['Realistic timelines', 'Excellent resource planning', 'Builds lasting legacies']
+        },
+        'Metal Snake': {
+            trait: 'The Analytical Strategist',
+            description: 'You analyze data with penetrating insight.',
+            strengths: ['Plans experiments strategically', 'Sharp mind', 'Identifies critical experiments']
+        },
+        'Water Snake': {
+            trait: 'The Intuitive Theorist',
+            description: 'You sense underlying patterns in data.',
+            strengths: ['Develops sophisticated models', 'Deep thinking', 'Elegant explanations']
+        },
+        'Wood Snake': {
+            trait: 'The Wise Counselor',
+            description: 'You offer thoughtful advice on experimental design.',
+            strengths: ['Perceptive about lab dynamics', 'Resolves conflicts', 'Cultivates collaborations']
+        },
+        'Fire Snake': {
+            trait: 'The Intense Specialist',
+            description: 'You pursue your research focus with laser intensity.',
+            strengths: ['Unmatched deep expertise', 'Demands excellence', 'Produces definitive studies']
+        },
+        'Earth Snake': {
+            trait: 'The Methodical Investigator',
+            description: 'You systematically explore hypotheses with careful logic.',
+            strengths: ['Well-designed experiments', 'Thorough analysis', 'Builds strong arguments']
+        },
+        'Metal Horse': {
+            trait: 'The Efficient Multi-Tasker',
+            description: 'You gallop through experiments with impressive speed and precision.',
+            strengths: ['Runs multiple projects', 'Maintains high standards', 'Meets tight deadlines']
+        },
+        'Water Horse': {
+            trait: 'The Adventurous Explorer',
+            description: 'You eagerly try new techniques and explore uncharted research areas.',
+            strengths: ['Enthusiasm for learning', 'Stays at forefront', 'Masters new methods']
+        },
+        'Wood Horse': {
+            trait: 'The Energetic Collaborator',
+            description: 'You connect researchers across disciplines with boundless enthusiasm.',
+            strengths: ['Collaborative spirit', 'Quick work pace', 'Valued team member']
+        },
+        'Fire Horse': {
+            trait: 'The Passionate Dynamo',
+            description: 'You pursue research with unbridled passion and remarkable energy.',
+            strengths: ['Excitement is contagious', 'Motivates entire labs', 'Thrives under pressure']
+        },
+        'Earth Horse': {
+            trait: 'The Dependable Workhorse',
+            description: 'You consistently deliver quality results through steady effort.',
+            strengths: ['Practical approach', 'Reliable output', 'Tackles essential experiments']
+        },
+        'Metal Goat': {
+            trait: 'The Refined Artisan',
+            description: 'You perfect techniques with artistic precision.',
+            strengths: ['Gallery-worthy images', 'Optimizes protocols', 'Elegant simplicity']
+        },
+        'Water Goat': {
+            trait: 'The Empathetic Supporter',
+            description: 'You sense when colleagues are struggling and offer quiet support.',
+            strengths: ['Compassionate presence', 'Warms lab atmosphere', 'Gentle with experiments']
+        },
+        'Wood Goat': {
+            trait: 'The Harmonious Team Player',
+            description: 'You adapt to group needs and maintain lab harmony.',
+            strengths: ['Flexible and cooperative', 'Helps wherever needed', 'Organizes shared spaces']
+        },
+        'Fire Goat': {
+            trait: 'The Creative Visionary',
+            description: 'You generate innovative experimental approaches.',
+            strengths: ['Imaginative solutions', 'Brings beauty to research', 'Artistic flair']
+        },
+        'Earth Goat': {
+            trait: 'The Careful Guardian',
+            description: 'You maintain lab safety and proper protocols.',
+            strengths: ['Protects everyone', 'Ensures proper disposal', 'Equipment maintenance']
+        },
+        'Metal Monkey': {
+            trait: 'The Clever Improviser',
+            description: 'You ingeniously MacGyver solutions when equipment fails.',
+            strengths: ['Quick thinking', 'Technical skill', 'Solves impossible problems']
+        },
+        'Water Monkey': {
+            trait: 'The Versatile Learner',
+            description: 'You rapidly master new techniques and adapt to any project.',
+            strengths: ['Intellectual flexibility', 'Valuable across fields', 'Thrives on variety']
+        },
+        'Wood Monkey': {
+            trait: 'The Playful Innovator',
+            description: 'You approach science with curiosity and humor.',
+            strengths: ['Makes lab enjoyable', 'Creative problem-solving', 'Fun exploration']
+        },
+        'Fire Monkey': {
+            trait: 'The Competitive Achiever',
+            description: 'You pursue discoveries with clever strategy.',
+            strengths: ['Quick-witted', 'Resourceful', 'Competitive drive']
+        },
+        'Earth Monkey': {
+            trait: 'The Practical Genius',
+            description: 'You combine cleverness with common sense.',
+            strengths: ['Efficient solutions', 'Grounded intelligence', 'Makes concepts accessible']
+        },
+        'Metal Rooster': {
+            trait: 'The Meticulous Timekeeper',
+            description: 'You arrive early and maintain strict schedules.',
+            strengths: ['Time-sensitive experiments run perfectly', 'Organized approach', 'Prevents errors']
+        },
+        'Water Rooster': {
+            trait: 'The Observant Analyst',
+            description: 'You notice subtle experimental details others miss.',
+            strengths: ['Careful observations', 'Catches artifacts', 'Reveals true signals']
+        },
+        'Wood Rooster': {
+            trait: 'The Dedicated Educator',
+            description: 'You meticulously teach proper technique.',
+            strengths: ['Produces skilled researchers', 'High standards', 'Supportive teaching']
+        },
+        'Fire Rooster': {
+            trait: 'The Proud Perfectionist',
+            description: 'You take immense pride in producing flawless work.',
+            strengths: ['Polished presentations', 'Pristine data', 'Inspires others']
+        },
+        'Earth Rooster': {
+            trait: 'The Reliable Organizer',
+            description: 'You systematically maintain lab order.',
+            strengths: ['Nothing overlooked', 'Keeps experiments on track', 'Complete documentation']
+        },
+        'Metal Dog': {
+            trait: 'The Principled Watchdog',
+            description: 'You uphold rigorous scientific standards.',
+            strengths: ['Ensures ethical research', 'Reproducible results', 'Protects scientific truth']
+        },
+        'Water Dog': {
+            trait: 'The Intuitive Ally',
+            description: 'You sense when colleagues need help.',
+            strengths: ['Emotional intelligence', 'Maintains morale', 'Lasting relationships']
+        },
+        'Wood Dog': {
+            trait: 'The Loyal Teammate',
+            description: 'You support lab members through thick and thin.',
+            strengths: ['Generous with time', 'Creates family atmosphere', 'Unwavering faithfulness']
+        },
+        'Fire Dog': {
+            trait: 'The Passionate Advocate',
+            description: 'You champion important causes in science.',
+            strengths: ['Fierce dedication', 'Inspires others', 'Defends colleagues']
+        },
+        'Earth Dog': {
+            trait: 'The Trustworthy Foundation',
+            description: 'You provide stable, honest counsel.',
+            strengths: ['Reliable results', 'Practical loyalty', 'Builds enduring culture']
+        },
+        'Metal Pig': {
+            trait: 'The Generous Perfectionist',
+            description: 'You share high-quality reagents and materials.',
+            strengths: ['Helps others perfect techniques', 'Pursues excellence', 'Supports all']
+        },
+        'Water Pig': {
+            trait: 'The Compassionate Peacemaker',
+            description: 'You create a warm, inclusive lab environment.',
+            strengths: ['Gentle wisdom', 'Emotional support', 'Facilitates harmony']
+        },
+        'Wood Pig': {
+            trait: 'The Abundant Provider',
+            description: 'You ensure the lab never lacks supplies or support.',
+            strengths: ['Helps others develop', 'Celebrates successes', 'Growth-oriented']
+        },
+        'Fire Pig': {
+            trait: 'The Enthusiastic Enjoyer',
+            description: 'You find joy in science and share it abundantly.',
+            strengths: ['Positive energy', 'Celebrates results', 'Makes research fun']
+        },
+        'Earth Pig': {
+            trait: 'The Honest Supporter',
+            description: 'You offer sincere help and practical assistance.',
+            strengths: ['Down-to-earth generosity', 'Reliable support', 'Creates trust']
+        }
+    };
 
-};
+    function getChineseZodiac(year) {
+        const baseYear = 1924;
+        const yearsSince = year - baseYear;
+        const animalIndex = yearsSince % 12;
+        const elementIndex = Math.floor((yearsSince % 10) / 2);
+        return {
+            animal: animals[animalIndex],
+            element: elements[elementIndex]
+        };
+    }
 
-const calculateZodiac = (date) => {
-const birthYear = new Date(date).getFullYear();
-const { animal, element } = getChineseZodiac(birthYear);
-const sign = `${element} ${animal}`;
-
-```
-return {
-  sign,
-  ...labPersonalities[sign]
-};
-```
-
-};
-
-const handleSubmit = () => {
-if (birthdate) {
-const zodiacResult = calculateZodiac(birthdate);
-setResult(zodiacResult);
-}
-};
-
-return (
-<div className="min-h-screen bg-red-600 p-4 md:p-8 relative overflow-hidden">
-{/* Decorative elements */}
-<div className="absolute top-0 left-0 w-full h-32 bg-gradient-to-b from-yellow-400 to-transparent opacity-20"></div>
-<div className="absolute bottom-0 right-0 w-64 h-64 bg-yellow-400 rounded-full opacity-10 blur-3xl"></div>
-<div className="absolute top-20 right-10 w-40 h-40 bg-yellow-300 rounded-full opacity-10 blur-2xl"></div>
-
-```
-  <div className="max-w-3xl mx-auto relative z-10">
-    {/* Lantern decorations */}
-    <div className="flex justify-center gap-8 mb-6">
-      <div className="w-12 h-16 bg-red-500 border-4 border-yellow-400 rounded-lg shadow-lg"></div>
-      <div className="w-12 h-16 bg-red-500 border-4 border-yellow-400 rounded-lg shadow-lg"></div>
-    </div>
-
-    <div className="bg-gradient-to-br from-red-50 to-yellow-50 rounded-2xl shadow-2xl p-6 md:p-10 border-8 border-yellow-400">
-      {/* Header with traditional styling */}
-      <div className="text-center mb-8 relative">
-        <div className="absolute -top-8 left-1/2 transform -translate-x-1/2 w-32 h-1 bg-yellow-500"></div>
-        <h1 className="text-4xl md:text-5xl font-bold text-red-700 mb-3 tracking-wide" style={{fontFamily: 'serif'}}>
-          實驗室生肖
-        </h1>
-        <h2 className="text-2xl md:text-3xl font-bold text-red-600 mb-2">
-          Lab Personality Zodiac
-        </h2>
-        <div className="flex justify-center items-center gap-2 mb-2">
-          <div className="w-16 h-1 bg-gradient-to-r from-transparent via-red-400 to-transparent"></div>
-          <span className="text-2xl">🧧</span>
-          <div className="w-16 h-1 bg-gradient-to-r from-transparent via-red-400 to-transparent"></div>
-        </div>
-        <p className="text-gray-700 text-lg">
-          Discover your research personality
-        </p>
-      </div>
-
-      {/* Input section with red packet styling */}
-      <div className="mb-8 bg-white rounded-xl p-6 shadow-lg border-4 border-red-300">
-        <div className="flex flex-col gap-4">
-          <label className="text-xl font-bold text-red-700 text-center">
-            Enter Your Birthday
-          </label>
-          <div className="flex flex-col md:flex-row gap-4">
-            <div className="flex-1 relative">
-              <Calendar className="absolute left-3 top-1/2 transform -translate-y-1/2 text-red-400" size={20} />
-              <input
-                type="date"
-                value={birthdate}
-                onChange={(e) => setBirthdate(e.target.value)}
-                className="w-full pl-10 pr-4 py-3 border-3 border-red-300 rounded-lg focus:border-yellow-500 focus:outline-none focus:ring-2 focus:ring-yellow-400"
-              />
+    function calculateZodiac() {
+        const birthdate = document.getElementById('birthdate').value;
+        if (!birthdate) return;
+        
+        const birthYear = new Date(birthdate).getFullYear();
+        const { animal, element } = getChineseZodiac(birthYear);
+        const sign = `${element} ${animal}`;
+        const personality = labPersonalities[sign];
+        
+        document.getElementById('result').innerHTML = `
+            <div class="bg-gradient-to-br from-yellow-50 via-red-50 to-yellow-50 rounded-xl p-6 md:p-8 border-4 border-yellow-400 shadow-xl relative overflow-hidden">
+                <div class="absolute top-0 left-0 w-16 h-16 border-t-4 border-l-4 border-red-500 rounded-tl-xl"></div>
+                <div class="absolute top-0 right-0 w-16 h-16 border-t-4 border-r-4 border-red-500 rounded-tr-xl"></div>
+                <div class="absolute bottom-0 left-0 w-16 h-16 border-b-4 border-l-4 border-red-500 rounded-bl-xl"></div>
+                <div class="absolute bottom-0 right-0 w-16 h-16 border-b-4 border-r-4 border-red-500 rounded-br-xl"></div>
+                
+                <div class="relative z-10">
+                    <div class="text-center mb-6">
+                        <span class="text-5xl mb-3 block">🎊</span>
+                        <h2 class="text-3xl md:text-4xl font-bold text-red-700 mb-2 chinese-font">${sign}</h2>
+                        <div class="w-24 h-1 bg-gradient-to-r from-transparent via-yellow-500 to-transparent mx-auto mb-3"></div>
+                        <h3 class="text-xl md:text-2xl font-bold text-red-600 mb-2 bg-yellow-100 inline-block px-6 py-2 rounded-full border-2 border-yellow-400">
+                            ${personality.trait}
+                        </h3>
+                    </div>
+                    
+                    <div class="bg-white bg-opacity-70 rounded-lg p-6 mb-4">
+                        <p class="text-gray-800 text-lg leading-relaxed mb-4">
+                            ${personality.description}
+                        </p>
+                        
+                        <div class="border-t-2 border-yellow-400 pt-4">
+                            <h4 class="text-lg font-bold text-red-700 mb-3 flex items-center gap-2">
+                                <span>⭐</span> Your Lab Strengths
+                            </h4>
+                            <ul class="space-y-2">
+                                ${personality.strengths.map(s => `
+                                    <li class="flex items-start gap-2 text-gray-700">
+                                        <span class="text-yellow-600 mt-1">•</span>
+                                        <span>${s}</span>
+                                    </li>
+                                `).join('')}
+                            </ul>
+                        </div>
+                    </div>
+                </div>
             </div>
-            <button
-              onClick={handleSubmit}
-              className="px-8 py-3 bg-gradient-to-r from-red-600 to-red-700 text-yellow-100 font-bold rounded-lg hover:from-red-700 hover:to-red-800 transition-all shadow-lg hover:shadow-xl border-2 border-yellow-400 text-lg"
-            >
-              揭曉 Reveal
-            </button>
-          </div>
-        </div>
-      </div>
+        `;
+    }
 
-      {/* Results with fortune card styling */}
-      {result && (
-        <div className="bg-gradient-to-br from-yellow-50 via-red-50 to-yellow-50 rounded-xl p-6 md:p-8 border-4 border-yellow-400 shadow-xl relative overflow-hidden">
-          {/* Decorative corner elements */}
-          <div className="absolute top-0 left-0 w-16 h-16 border-t-4 border-l-4 border-red-500 rounded-tl-xl"></div>
-          <div className="absolute top-0 right-0 w-16 h-16 border-t-4 border-r-4 border-red-500 rounded-tr-xl"></div>
-          <div className="absolute bottom-0 left-0 w-16 h-16 border-b-4 border-l-4 border-red-500 rounded-bl-xl"></div>
-          <div className="absolute bottom-0 right-0 w-16 h-16 border-b-4 border-r-4 border-red-500 rounded-br-xl"></div>
-          
-          <div className="relative z-10">
-            <div className="text-center mb-6">
-              <span className="text-5xl mb-3 block">🎊</span>
-              <h2 className="text-3xl md:text-4xl font-bold text-red-700 mb-2" style={{fontFamily: 'serif'}}>
-                {result.sign}
-              </h2>
-              <div className="w-24 h-1 bg-gradient-to-r from-transparent via-yellow-500 to-transparent mx-auto mb-3"></div>
-              <h3 className="text-xl md:text-2xl font-bold text-red-600 mb-2 bg-yellow-100 inline-block px-6 py-2 rounded-full border-2 border-yellow-400">
-                {result.trait}
-              </h3>
-            </div>
+    // Render app
+    document.getElementById('app').innerHTML = `
+        <div class="min-h-screen bg-red-600 p-4 md:p-8 relative overflow-hidden">
+            <div class="absolute top-0 left-0 w-full h-32 bg-gradient-to-b from-yellow-400 to-transparent opacity-20"></div>
+            <div class="absolute bottom-0 right-0 w-64 h-64 bg-yellow-400 rounded-full opacity-10 blur-3xl"></div>
+            <div class="absolute top-20 right-10 w-40 h-40 bg-yellow-300 rounded-full opacity-10 blur-2xl"></div>
             
-            <div className="bg-white bg-opacity-70 rounded-lg p-6 mb-4">
-              <p className="text-gray-800 text-lg leading-relaxed mb-4">
-                {result.description}
-              </p>
-              
-              <div className="border-t-2 border-yellow-400 pt-4">
-                <h4 className="text-lg font-bold text-red-700 mb-3 flex items-center gap-2">
-                  <span>⭐</span> Your Lab Strengths
-                </h4>
-                <ul className="space-y-2">
-                  {result.strengths.map((strength, index) => (
-                    <li key={index} className="flex items-start gap-2 text-gray-700">
-                      <span className="text-yellow-600 mt-1">•</span>
-                      <span>{strength}</span>
-                    </li>
-                  ))}
-                </ul>
-              </div>
+            <div class="max-w-3xl mx-auto relative z-10">
+                <div class="flex justify-center gap-8 mb-6">
+                    <div class="w-12 h-16 bg-red-500 border-4 border-yellow-400 rounded-lg shadow-lg"></div>
+                    <div class="w-12 h-16 bg-red-500 border-4 border-yellow-400 rounded-lg shadow-lg"></div>
+                </div>
+
+                <div class="bg-gradient-to-br from-red-50 to-yellow-50 rounded-2xl shadow-2xl p-6 md:p-10 border-8 border-yellow-400">
+                    <div class="text-center mb-8 relative">
+                        <div class="absolute -top-8 left-1/2 transform -translate-x-1/2 w-32 h-1 bg-yellow-500"></div>
+                        <h1 class="text-4xl md:text-5xl font-bold text-red-700 mb-3 tracking-wide chinese-font">實驗室生肖</h1>
+                        <h2 class="text-2xl md:text-3xl font-bold text-red-600 mb-2">Lab Personality Zodiac</h2>
+                        <div class="flex justify-center items-center gap-2 mb-2">
+                            <div class="w-16 h-1 bg-gradient-to-r from-transparent via-red-400 to-transparent"></div>
+                            <span class="text-2xl">🧧</span>
+                            <div class="w-16 h-1 bg-gradient-to-r from-transparent via-red-400 to-transparent"></div>
+                        </div>
+                        <p class="text-gray-700 text-lg">Discover your research personality</p>
+                    </div>
+
+                    <div class="mb-8 bg-white rounded-xl p-6 shadow-lg border-4 border-red-300">
+                        <div class="flex flex-col gap-4">
+                            <label class="text-xl font-bold text-red-700 text-center">Enter Your Birthday</label>
+                            <div class="flex flex-col md:flex-row gap-4">
+                                <div class="flex-1">
+                                    <input type="date" id="birthdate" class="w-full px-4 py-3 border-3 border-red-300 rounded-lg focus:border-yellow-500 focus:outline-none focus:ring-2 focus:ring-yellow-400">
+                                </div>
+                                <button onclick="calculateZodiac()" class="px-8 py-3 bg-gradient-to-r from-red-600 to-red-700 text-yellow-100 font-bold rounded-lg hover:from-red-700 hover:to-red-800 transition-all shadow-lg hover:shadow-xl border-2 border-yellow-400 text-lg">
+                                    揭曉 Reveal
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div id="result"></div>
+
+                    <div class="mt-8 pt-6 border-t-2 border-red-300">
+                        <div class="text-center">
+                            <div class="flex justify-center gap-2 mb-2">
+                                <span class="text-2xl">🏮</span>
+                                <span class="text-2xl">🐉</span>
+                                <span class="text-2xl">🏮</span>
+                            </div>
+                            <p class="text-sm text-gray-600">Based on Chinese Zodiac traditions adapted for lab life</p>
+                            <p class="text-xs text-gray-500 mt-1">The 60-year cycle combines 12 animals with 5 elements</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="flex justify-center gap-8 mt-6">
+                    <div class="w-12 h-16 bg-red-500 border-4 border-yellow-400 rounded-lg shadow-lg"></div>
+                    <div class="w-12 h-16 bg-red-500 border-4 border-yellow-400 rounded-lg shadow-lg"></div>
+                </div>
             </div>
-          </div>
         </div>
-      )}
-
-      {/* Footer */}
-      <div className="mt-8 pt-6 border-t-2 border-red-300">
-        <div className="text-center">
-          <div className="flex justify-center gap-2 mb-2">
-            <span className="text-2xl">🏮</span>
-            <span className="text-2xl">🐉</span>
-            <span className="text-2xl">🏮</span>
-          </div>
-          <p className="text-sm text-gray-600">
-            Based on Chinese Zodiac traditions adapted for lab life
-          </p>
-          <p className="text-xs text-gray-500 mt-1">
-            The 60-year cycle combines 12 animals with 5 elements
-          </p>
-        </div>
-      </div>
-    </div>
-
-    {/* Bottom decorative lanterns */}
-    <div className="flex justify-center gap-8 mt-6">
-      <div className="w-12 h-16 bg-red-500 border-4 border-yellow-400 rounded-lg shadow-lg"></div>
-      <div className="w-12 h-16 bg-red-500 border-4 border-yellow-400 rounded-lg shadow-lg"></div>
-    </div>
-  </div>
-</div>
+    `;
+</script>
 ```
 
-);
-};
-
-export default ZodiacLabCalculator;
+</body>
+</html>
